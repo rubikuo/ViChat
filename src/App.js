@@ -4,52 +4,71 @@ import Login from "./Login";
 
 import "./App.css";
 
-class App extends React.Component{
-   constructor(props){
-     super(props);
-     this.state = {logIn: false, 
-      currentPage: "chat",
-     username: ""};
-   
-     this.updateUserName = this.updateUserName.bind(this);
-     this.submitUser = this.submitUser.bind(this);
-   }
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentPage: "logIn",
+      username: ""
+    };
+    this.regExLogin = /^[a-zåäöA-ZÅÄÖ\d-_\s]*$/;
 
-   // to update username in the state
-   updateUserName(e) {
-    this.setState({username: e.target.value})
+    this.updateUserName = this.updateUserName.bind(this);
+    this.logInUserName = this.logInUserName.bind(this);
+  }
+
+  // to update username in the state
+  updateUserName(e) {
+    this.setState({ username: e.target.value });
     console.log(e.target.value);
   }
 
-//
-  submitUser(e){
+  //
+  logInUserName(e) {
     e.preventDefault();
-    console.log(this.state.username) 
-
-   
+    if (
+      !this.regExLogin.test(this.state.username) ||
+      this.state.username.length < 1 ||
+      this.state.username.length > 12
+    )
+      return;
+    else {
+      this.setState({ currentPage: "chat" });
+    }
   }
-   
 
- render(){
-   let currentPage;
-   let logInPage = <Login updateUserName ={this.updateUserName} submitUser={this.submitUser} />
-   let chatPage = <Chat username={this.state.username}/>
-   if(this.state.currentPage === "logIn"){
-       currentPage = logInPage;
-   }else{
-     currentPage = chatPage;
-   }
+  render() {
+    let page;
+    let logInPage = (
+      <>
+        <header className="logInHeader">
+          <h1>ViChat</h1>
+        </header>
+        <Login
+          updateUserName={this.updateUserName}
+          logInUserName={this.logInUserName}
+        />
+      </>
+    );
 
-  return (
-    <div className="App">
-    
-      <h1 className="header">EC Chat Space</h1>
-   
-      {currentPage}
+    let chatPage = (
+      <>
+        <header className="chatHeader">
+          <h1>ViChat</h1>
+          <p>{this.state.username}</p>
+        </header>
+        <Chat username={this.state.username} />
+      </>
+    );
 
-    </div>
-  );
-}
+    if (this.state.currentPage === "logIn") {
+      page = logInPage;
+    } else if (this.state.currentPage === "chat") {
+      page = chatPage;
+    }
+
+    return <div className="App">{page}</div>;
+  }
 }
 
 export default App;

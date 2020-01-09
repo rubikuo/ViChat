@@ -1,11 +1,6 @@
 import React from 'react'
 
 class MessageList extends React.Component {
-    constructor(props){
-        super(props);
-        this.state={};
-    }
-
 
 
     render() {
@@ -14,13 +9,16 @@ class MessageList extends React.Component {
         let result = users.map((user)=>{
             return(
                 
-            <div key={user.id}>{user.username}</div>
+            <div className="eachUserData" key={user.id}>
+               <p className="userName">{user.username}</p> 
+               <p className="msgContent">{user.content}</p>
+            </div>
          
             )
         })
 
         return (
-            <div>
+            <div className="chatCtn">
               {result}
             </div>
         )
