@@ -74,7 +74,7 @@ class Chat extends React.Component {
     let disabled;
     let warning;
     let numOfCharacters = characters.length;
-    if (numOfCharacters > 20) {
+    if (numOfCharacters > 200) {
       disabled = true;
       warning= <span className="inputWarning">Max 200 characters</span>;
     } else {
@@ -103,7 +103,7 @@ class Chat extends React.Component {
               Send
             </button>
           </form>
-          <p className="wordsCount">{warning} {numOfCharacters} / 20</p>
+          <p className="wordsCount">{warning} {numOfCharacters} / 200</p>
      
         </div>
       </div>
