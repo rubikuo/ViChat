@@ -15,15 +15,14 @@ class App extends React.Component {
     this.regExLogin = /^[a-zA-Z0-9-_\s]{1,12}$/;
     this.updateUserName = this.updateUserName.bind(this);
     this.logInUserName = this.logInUserName.bind(this);
+    this.logOut = this.logOut.bind(this);
   }
-
   // to update username in the state
   updateUserName(e) {
     this.setState({ username: e.target.value });
     console.log(e.target.value);
   }
 
-  //
   logInUserName(e) {
     e.preventDefault();
     if (
@@ -33,6 +32,10 @@ class App extends React.Component {
     else {
       this.setState({ currentPage: "chat" });
     }
+  }
+
+  logOut(e){
+     this.setState({currentPage:"logIn", username:""});
   }
 
   render() {
@@ -51,7 +54,7 @@ class App extends React.Component {
 
     let chatPage = (
       <>
-        <RenderHeader username={this.state.username} />
+        <RenderHeader username={this.state.username } logOut={this.logOut} />
         <Chat username={this.state.username} />
       </>
     );

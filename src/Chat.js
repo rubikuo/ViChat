@@ -8,23 +8,23 @@ class Chat extends React.Component {
   constructor(props) {
     super(props);
     this.state = { newMessage: "", users: [], color: "black" };
-
     this.socket = io("http://3.120.96.16:3000");
     this.historyMsg = this.historyMsg.bind(this);
     this.updateNewMsg = this.updateNewMsg.bind(this);
     this.pushNewMsg = this.pushNewMsg.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
+    this.scrollToBottom = this.scrollToBottom.bind(this);
   }
 
   componentDidMount() {
     this.socket.on("messages", this.historyMsg);
     this.socket.on("new_message", this.pushNewMsg);
-
   }
 
   historyMsg(historyData) {
     console.log("historyMsg: ", historyData);
     this.setState({ users: historyData }); // to get the history message
+    this.scrollToBottom();
   }
 
   updateNewMsg(e) {
@@ -38,6 +38,20 @@ class Chat extends React.Component {
 
     console.log("newMsg: ", message);
     this.setState({ users: [...copyMessage, message] }); // to push new message to history
+    this.scrollToBottom();
+  }
+
+  scrollToBottom() {
+    let chatCtn = document.querySelector(".chatCtn");
+    chatCtn.scrollTop = chatCtn.scrollHeight;
+  }
+
+
+
+  componentWillUnmount() {
+    this.socket.on("disconnect", () => {
+      console.log("Disconnected");
+    });
   }
 
   sendMessage(e) {
@@ -58,14 +72,6 @@ class Chat extends React.Component {
   }
 
   render() {
-    // let words = this.state.newMessage.split(" ");
-    // console.log(words);
-    // let amountOfWords = words.length;
-
-    // let wordCountColor;
-    // if(amountOfWords > 20){
-    //   wordCountColor = "red";
-    // }
     let characters = this.state.newMessage
       .split(" ")
       .filter(word => word)
@@ -76,10 +82,15 @@ class Chat extends React.Component {
     let numOfCharacters = characters.length;
     if (numOfCharacters > 200) {
       disabled = true;
-      warning= <span className="inputWarning">Max 200 characters</span>;
+      warning = (
+        <span className="inputWarning">Ooopss! Max 200 characters</span>
+      );
+    } else if (numOfCharacters === 0) {
+      disabled = true;
+      warning = <span className="inputWarning">Speak up your mind...</span>;
     } else {
       disabled = false;
-      warning ="";
+      warning = "";
     }
 
     return (
@@ -103,8 +114,9 @@ class Chat extends React.Component {
               Send
             </button>
           </form>
-          <p className="wordsCount">{warning} {numOfCharacters} / 200</p>
-     
+          <p className="wordsCount">
+            {warning} {numOfCharacters} / 200
+          </p>
         </div>
       </div>
     );
