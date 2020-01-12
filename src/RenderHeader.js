@@ -4,11 +4,6 @@ import { faUserAlt} from "@fortawesome/free-solid-svg-icons";
 // import io from "socket.io-client";
 
 class RenderHeader extends React.Component {
-    // constructor(props){
-    //     super(props);
-    //     this.socket = io("http://3.120.96.16:3000");
-    // }
-
 
   render() {
     return (

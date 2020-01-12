@@ -12,7 +12,7 @@ class App extends React.Component {
       currentPage: "logIn",
       username: ""
     };
-    this.regExLogin = /^[a-zA-Z0-9-_\s]{1,12}$/;
+    this.regExLogin = /^[a-zåäöA-ZÅÄÖ0-9-_\s]{1,12}$/;
     this.updateUserName = this.updateUserName.bind(this);
     this.logInUserName = this.logInUserName.bind(this);
     this.logOut = this.logOut.bind(this);
