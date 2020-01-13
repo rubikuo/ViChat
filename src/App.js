@@ -12,11 +12,13 @@ class App extends React.Component {
       currentPage: "logIn",
       username: ""
     };
-    this.regExLogin = /^[a-zåäöA-ZÅÄÖ0-9-_\s]{1,12}$/;
+
+    this.regExLogin = /^[a-zåäöA-ZÅÄÖ0-9-_\s]*$/;
     this.updateUserName = this.updateUserName.bind(this);
     this.logInUserName = this.logInUserName.bind(this);
     this.logOut = this.logOut.bind(this);
   }
+
   // to update username in the state
   updateUserName(e) {
     this.setState({ username: e.target.value });
@@ -25,17 +27,19 @@ class App extends React.Component {
 
   logInUserName(e) {
     e.preventDefault();
-    if (
-      !this.regExLogin.test(this.state.username)
-    )
-      return;
+    let nameCharacters= this.state.username
+    .split(" ")
+    .filter(word => word)
+    .join("");
+
+    if (!this.regExLogin.test(nameCharacters)|| nameCharacters.length === 0 || nameCharacters.length > 12 ) return;
     else {
       this.setState({ currentPage: "chat" });
     }
   }
 
-  logOut(e){
-     this.setState({currentPage:"logIn", username:""});
+  logOut(e) {
+    this.setState({ currentPage: "logIn", username: "" });
   }
 
   render() {
@@ -54,7 +58,7 @@ class App extends React.Component {
 
     let chatPage = (
       <>
-        <RenderHeader username={this.state.username } logOut={this.logOut} />
+        <RenderHeader username={this.state.username} logOut={this.logOut} />
         <Chat username={this.state.username} />
       </>
     );

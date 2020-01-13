@@ -16,29 +16,33 @@ class Chat extends React.Component {
     this.scrollToBottom = this.scrollToBottom.bind(this);
     this.timeConverter = this.timeConverter.bind(this);
   }
+  
 
   componentDidMount() {
     this.socket.on("messages", this.historyMsg);
     this.socket.on("new_message", this.pushNewMsg);
   }
 
+  // to get the history message
   historyMsg(historyData) {
     console.log("historyMsg: ", historyData);
-    this.setState({ users: historyData }); // to get the history message
+    this.setState({ users: historyData }); 
     this.scrollToBottom();
   }
 
+  // to grab the new message from the input value and update to state
   updateNewMsg(e) {
-    this.setState({ newMessage: e.target.value }); // to grab the new message from the input value and update to state
+    this.setState({ newMessage: e.target.value }); 
     console.log("updateNewMsg: ", e.target.value);
   }
 
+  // to push new message to history
   pushNewMsg(message) {
     let copyMessage = [...this.state.users];
     copyMessage.splice(0, 1);
 
     console.log("newMsg: ", message);
-    this.setState({ users: [...copyMessage, message] }); // to push new message to history
+    this.setState({ users: [...copyMessage, message] }); 
     this.scrollToBottom();
   }
 
@@ -59,8 +63,10 @@ class Chat extends React.Component {
     this.socket.on("disconnect", () => {
       console.log("Disconnected");
     });
+    this.socket.disconnect();
   }
 
+  //send new message
   sendMessage(e) {
     e.preventDefault();
     console.log("newMsg:", this.state.newMessage);
@@ -73,26 +79,30 @@ class Chat extends React.Component {
       response => {
         console.log("Emitted", "response:", response);
         this.pushNewMsg(response.data.newMessage);
-      }
-    ); // callback function to check if its sucessful
+      } // callback function to check if its sucessful
+    ); 
+    // to reset the input value
     this.setState({ newMessage: "" });
   }
 
   render() {
+
     let characters = this.state.newMessage
       .split(" ")
       .filter(word => word)
       .join("");
+
     console.log(characters);
 
     let disabled;
     let warning;
+
     let numOfCharacters = characters.length;
+
     if (numOfCharacters > 200) {
       disabled = true;
-      warning = (
-        <span className="inputWarning">Ooopss! Max 200 characters</span>
-      );
+      warning = 
+        <span className="inputWarning">Ooopss! Max 200 characters</span>;
     } else if (numOfCharacters === 0) {
       disabled = true;
       warning = <span className="inputWarning">Speak up your mind...</span>;
