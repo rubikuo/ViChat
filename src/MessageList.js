@@ -3,11 +3,7 @@ import React from "react";
 import Emojify from "react-emojione";
 
 class MessageList extends React.Component {
-    
   render() {
-   
-
-
     let users = this.props.users;
     console.log(users);
 
@@ -31,8 +27,10 @@ class MessageList extends React.Component {
 
       return (
         <div className="eachUserData" key={user.id}>
-<span className="timeStamp">{this.props.timeConverter(user.timestamp)}</span>
-      <p className="userName">{user.username}</p>
+          <span className="timeStamp">
+            {this.props.timeConverter(user.timestamp)}
+          </span>
+          <p className="userName">{user.username}</p>
           <p className="msgContent">
             <Emojify>{convertedContent}</Emojify>
           </p>
