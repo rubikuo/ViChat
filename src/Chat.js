@@ -14,6 +14,8 @@ class Chat extends React.Component {
     this.pushNewMsg = this.pushNewMsg.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
     this.scrollToBottom = this.scrollToBottom.bind(this);
+    this.ctnRef = React.createRef();
+	
   }
   
 
@@ -46,7 +48,7 @@ class Chat extends React.Component {
   }
 
   scrollToBottom() {
-    let chatCtn = document.querySelector(".chatCtn");
+    let chatCtn = this.ctnRef.current;
     chatCtn.scrollTop = chatCtn.scrollHeight;
   }
 
@@ -105,7 +107,7 @@ class Chat extends React.Component {
     return (
       <div className="Chat">
         <div className="messageCtn">
-          <MessageList users={this.state.users} />
+          <MessageList users={this.state.users} ctnRef = {this.ctnRef}/>
 
           <form
             className="sendCtn"
