@@ -38,7 +38,7 @@ class MessageList extends React.Component {
       );
     });
 
-    return <div className="chatCtn">{result}</div>;
+    return <div className="chatCtn" ref={this.props.ctnRef}>{result}</div>;
   }
 }
 
