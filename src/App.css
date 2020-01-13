@@ -87,6 +87,8 @@ textarea {
     background-color: rgb(55, 111, 156);
 }
 
+
+
 /* header h1{
   margin-left: 30px;
 } */
@@ -253,17 +255,22 @@ textarea {
 
 
 
-
-
 .eachUserData{
   background-color: rgba(47, 82, 159, 0.68);
   margin:0;
   color: white;
   text-shadow: 1px 1px 1px black;
-
   text-align: left;
+  position: relative;
 
 }
+
+.eachUserData span.timeStamp{
+  position: absolute;
+  top: 10%;
+  right: 3%;
+}
+
 .eachUserData p.userName, .eachUserData p.msgContent{
   margin:2px;
   padding-left: 25px;

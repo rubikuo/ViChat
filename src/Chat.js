@@ -14,6 +14,7 @@ class Chat extends React.Component {
     this.pushNewMsg = this.pushNewMsg.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
     this.scrollToBottom = this.scrollToBottom.bind(this);
+    this.timeConverter = this.timeConverter.bind(this);
   }
 
   componentDidMount() {
@@ -46,7 +47,13 @@ class Chat extends React.Component {
     chatCtn.scrollTop = chatCtn.scrollHeight;
   }
 
-
+  timeConverter(UNIX_timestamp) {
+    let moment =
+      new Date(UNIX_timestamp).toLocaleDateString("sv-se") +
+      " " +
+      new Date(UNIX_timestamp).toLocaleTimeString("sv-se");
+    return moment;
+  }
 
   componentWillUnmount() {
     this.socket.on("disconnect", () => {
@@ -77,6 +84,7 @@ class Chat extends React.Component {
       .filter(word => word)
       .join("");
     console.log(characters);
+
     let disabled;
     let warning;
     let numOfCharacters = characters.length;
@@ -96,7 +104,10 @@ class Chat extends React.Component {
     return (
       <div className="Chat">
         <div className="messageCtn">
-          <MessageList users={this.state.users} />
+          <MessageList
+            users={this.state.users}
+            timeConverter={this.timeConverter}
+          />
 
           <form
             className="sendCtn"

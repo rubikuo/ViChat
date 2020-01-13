@@ -4,12 +4,16 @@ import Emojify from "react-emojione";
 
 class MessageList extends React.Component {
   render() {
+   
+
+
     let users = this.props.users;
     console.log(users);
     let result = users.map(user => {
       return (
         <div className="eachUserData" key={user.id}>
-          <p className="userName">{user.username}</p>
+<span className="timeStamp">{this.props.timeConverter(user.timestamp)}</span>
+      <p className="userName">{user.username}</p>
           <p className="msgContent">
             <Linkify>
               <Emojify>{user.content}</Emojify>
