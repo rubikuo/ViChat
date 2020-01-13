@@ -3,7 +3,6 @@ import React from "react";
 import Emojify from "react-emojione";
 
 class MessageList extends React.Component {
-    
   render() {
     let users = this.props.users;
     console.log(users);
