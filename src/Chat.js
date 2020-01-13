@@ -2,8 +2,6 @@ import React from "react";
 import io from "socket.io-client"; // npm i socket.io-client
 import MessageList from "./MessageList";
 
-// const socketURL = 'http://3.120.96.16:3000';
-
 class Chat extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +12,7 @@ class Chat extends React.Component {
     this.pushNewMsg = this.pushNewMsg.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
     this.scrollToBottom = this.scrollToBottom.bind(this);
-    this.timeConverter = this.timeConverter.bind(this);
+    // this.timeConverter = this.timeConverter.bind(this);
   }
 
   componentDidMount() {
@@ -47,13 +45,13 @@ class Chat extends React.Component {
     chatCtn.scrollTop = chatCtn.scrollHeight;
   }
 
-  timeConverter(UNIX_timestamp) {
-    let moment =
-      new Date(UNIX_timestamp).toLocaleDateString("sv-se") +
-      " " +
-      new Date(UNIX_timestamp).toLocaleTimeString("sv-se");
-    return moment;
-  }
+  // timeConverter(UNIX_timestamp) {
+  //   let moment =
+  //     new Date(UNIX_timestamp).toLocaleDateString("sv-se") +
+  //     " " +
+  //     new Date(UNIX_timestamp).toLocaleTimeString("sv-se");
+  //   return moment;
+  // }
 
   componentWillUnmount() {
     this.socket.on("disconnect", () => {
@@ -106,7 +104,7 @@ class Chat extends React.Component {
         <div className="messageCtn">
           <MessageList
             users={this.state.users}
-            timeConverter={this.timeConverter}
+            // timeConverter={this.timeConverter}
           />
 
           <form
