@@ -27,18 +27,24 @@ class MessageList extends React.Component {
 
       return (
         <div className="eachUserData" key={user.id}>
-          <span className="timeStamp">
-            {this.props.timeConverter(user.timestamp)}
-          </span>
-          <p className="userName">{user.username}</p>
-          <p className="msgContent">
-            <Emojify>{convertedContent}</Emojify>
-          </p>
+        <div className="userDiv">
+        <p className="userName">{user.username}</p>
+        <p className="msgContent">
+        <Emojify>{convertedContent}</Emojify>
+        </p>
+        </div>
+        <div className="timeStamp">
+        {this.props.timeConverter(user.timestamp)}
+        </div>
         </div>
       );
     });
 
-    return <div className="chatCtn" ref={this.props.ctnRef}>{result}</div>;
+    return (
+      <div className="chatCtn" ref={this.props.ctnRef}>
+        {result}
+      </div>
+    );
   }
 }
 

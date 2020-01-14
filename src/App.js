@@ -12,8 +12,7 @@ class App extends React.Component {
       currentPage: "logIn",
       username: ""
     };
-
-    this.regExLogin = /^[a-zåäöA-ZÅÄÖ0-9-_\s]*$/;
+    this.regExLogin = /^[a-zåäöA-ZÅÄÖ0-9-_\s]{1,12}$/;
     this.updateUserName = this.updateUserName.bind(this);
     this.logInUserName = this.logInUserName.bind(this);
     this.logOut = this.logOut.bind(this);
@@ -26,13 +25,10 @@ class App extends React.Component {
   }
 
   logInUserName(e) {
+    let logInName = this.state.username;
     e.preventDefault();
-    let nameCharacters= this.state.username
-    .split(" ")
-    .filter(word => word)
-    .join("");
 
-    if (!this.regExLogin.test(nameCharacters)|| nameCharacters.length === 0 || nameCharacters.length > 12 ) return;
+    if (!this.regExLogin.test(logInName)) return;
     else {
       this.setState({ currentPage: "chat" });
     }

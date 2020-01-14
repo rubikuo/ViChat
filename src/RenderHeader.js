@@ -10,7 +10,7 @@ class RenderHeader extends React.Component {
       <header className="chatHeader">
         <h1>ViChat</h1>
         <div className="chatHeaderSmlCtn">
-          <p><FontAwesomeIcon icon={faUserAlt} /> Welcome {this.props.username}</p>
+          <p><FontAwesomeIcon icon={faUserAlt} /> {this.props.username}</p>
           <button className="logout-btn" onClick={this.props.logOut}>Log Out</button>
         </div>
       </header>

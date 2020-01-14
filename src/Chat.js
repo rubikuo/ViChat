@@ -60,7 +60,8 @@ class Chat extends React.Component {
   }
 
   componentWillUnmount() {
-    this.socket.on("disconnect", () => {
+    this.socket.off('new_messages');
+    this.socket.once("disconnect", () => {
       console.log("Disconnected");
     });
     this.socket.disconnect();
@@ -87,9 +88,6 @@ class Chat extends React.Component {
 
   render() {
     let characters = this.state.newMessage
-      .split(" ")
-      .filter(word => word)
-      .join("");
 
     console.log(characters);
 

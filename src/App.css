@@ -6,7 +6,7 @@ body,
   height: 100%;
 }
 
-/* body {
+body {
   background: linear-gradient(
       0deg,
       rgba(232, 230, 230, 0.913),
@@ -19,7 +19,7 @@ body,
   background-size: cover;
   background-color: rgba(207, 209, 211, 0.7);
   text-shadow: 2px 2px 2px rgb(240, 240, 240);
-} */
+}
 
 input,
 textarea {
@@ -39,6 +39,16 @@ textarea {
   font-family: 'Patua One', cursive; 
 }
 
+/*div for define log in username*/
+.userNameReg{
+  margin-top: 10px;
+  color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .logInHeader, .chatHeader {
   color: rgb(63, 91, 170);
   width: 100%;
@@ -55,44 +65,37 @@ textarea {
 }
 
 
-
-
 .chatHeader h1{
   margin-left: 10%;
 }
 
 .chatHeader .chatHeaderSmlCtn{
-  width: 40%;
+  width: 60%;
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
-  margin-right: 10%;
+  margin-right: 5%;
   font-size: 1.2rem;
 
 }
 
 .chatHeaderSmlCtn p{
   width: 80%;
-  
+  text-align: right;
+  margin-right: 10px;
   font-size: 1.5rem;
 }
 
 
 .chatHeaderSmlCtn button.logout-btn{
-    padding: 10px;
+    width: 4rem;
+    padding: 5px;
     border-radius: 5px;
     border: 1.5px dotted;
     line-height: 1rem;
     color: rgb(231, 225, 225);
     background-color: rgb(55, 111, 156);
 }
-
-
-
-/* header h1{
-  margin-left: 30px;
-} */
-
 
 
 .Login {
@@ -159,7 +162,7 @@ textarea {
 
 .messageCtn{
   margin-top: 15px;
-  width: 80%;
+  width: 65%;
   height: 500px;
   padding: 10px;
   border-radius: 5px;
@@ -175,7 +178,7 @@ textarea {
 .chatCtn{
   width: 100%;
   height: 90%;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 
@@ -250,31 +253,56 @@ textarea {
 
 .sendCtn input:focus, .sendCtn .msg-Btn:focus {
   outline: none;
-
 }
 
 
 
 .eachUserData{
-  background-color: rgba(47, 82, 159, 0.68);
-  margin:0;
+  background-color: rgb(47, 83, 159);
+  margin-top: 10px;
   color: white;
   text-shadow: 1px 1px 1px black;
   text-align: left;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 30px;
   position: relative;
+}
+
+.eachUserData::before{
+  content: "";
+  display: block;
+  width: 0; 
+  height: 0; 
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent; 
+  border-right: 22px solid rgb(47, 83, 159);
+  z-index: 1;
+  transform: rotate(35deg);
+  position: absolute;
+  top: -5px;
+  left: -2px;
 
 }
 
-.eachUserData span.timeStamp{
-  position: absolute;
-  top: 10%;
-  right: 3%;
+.eachUserData div.timeStamp{
+  padding-top: 10px;
+}
+
+.eachUserData div.userDiv{
+  width: 100%;
+
+}
+.eachUserData p.userName{
+  padding-bottom: 10px;
 }
 
 .eachUserData p.userName, .eachUserData p.msgContent{
   margin:2px;
   padding-left: 25px;
   padding-right: 20px;
+  overflow-wrap: break-word;
+
 }
 .eachUserData p.userName{
   padding-top: 10px;
