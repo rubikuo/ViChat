@@ -1,43 +1,50 @@
 import React from "react";
-// import Linkify from "react-linkify";
+import Linkify from "react-linkify";
 import Emojify from "react-emojione";
 
 class MessageList extends React.Component {
   render() {
-    let users = this.props.users;
+    let users = this.props.users; // this is the result from server
     console.log(users);
 
-    function isLink(string) {
-      let urlRegex = /https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,}/;
-      return urlRegex.test(string);
-    }
-
     let result = users.map(user => {
-      let convertedContent = user.content.split(" ").map(word => {
-        if (isLink(word)) {
-          //console.log(word)
-          return (
-            <a key={word} href={word}>
-              {word}
-            </a>
-          );
-        }
-        return " " + word + " ";
-      });
-
-      return (
-        <div className="eachUserData" key={user.id}>
-        <div className="userDiv">
-        <p className="userName">{user.username}</p>
-        <p className="msgContent">
-        <Emojify>{convertedContent}</Emojify>
-        </p>
+      if (user.username === this.props.username) {
+        return (
+          <div className="chatbubble-right" key={user.id}>
+            <div className="userDiv-right">
+              <p className="userName-right">{user.username}</p>
+              <div className="myData-right">
+                <div className="timeStamp-right">
+                  {this.props.timeConverter(user.timestamp)}
+                </div>
+                <p className="msgContent-right">
+                  <Linkify>
+                    <Emojify>{user.content}</Emojify>
+                  </Linkify>
+                </p>
+              </div>
+            </div>
+          </div>
+        );
+      } else {
+        return (
+          <div className="chatbubble-left" key={user.id}>
+          <div className="userDiv-left">
+            <p className="userName-left">{user.username}</p>
+            <div className="myData-left">
+              <div className="timeStamp-left">
+                {this.props.timeConverter(user.timestamp)}
+              </div>
+              <p className="msgContent-left">
+                <Linkify>
+                  <Emojify>{user.content}</Emojify>
+                </Linkify>
+              </p>
+            </div>
+          </div>
         </div>
-        <div className="timeStamp">
-        {this.props.timeConverter(user.timestamp)}
-        </div>
-        </div>
-      );
+        );
+      }
     });
 
     return (

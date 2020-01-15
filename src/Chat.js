@@ -87,7 +87,7 @@ class Chat extends React.Component {
   }
 
   render() {
-    let characters = this.state.newMessage
+    let characters = this.state.newMessage;
 
     console.log(characters);
 
@@ -113,6 +113,7 @@ class Chat extends React.Component {
       <div className="Chat">
         <div className="messageCtn">
           <MessageList
+            username = {this.props.username}
             users={this.state.users}
             timeConverter={this.timeConverter}
             ctnRef={this.ctnRef}

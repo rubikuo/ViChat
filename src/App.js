@@ -2,6 +2,7 @@ import React from "react";
 import Chat from "./Chat";
 import Login from "./Login";
 import RenderHeader from "./RenderHeader";
+import {Helmet} from "react-helmet";
 
 import "./App.css";
 
@@ -42,6 +43,7 @@ class App extends React.Component {
     let page;
     let logInPage = (
       <>
+        <Helmet><title>ViChat:Log-In</title></Helmet>
         <header className="logInHeader">
           <h1>ViChat</h1>
         </header>
@@ -54,6 +56,7 @@ class App extends React.Component {
 
     let chatPage = (
       <>
+       <Helmet><title>ViChat</title></Helmet>
         <RenderHeader username={this.state.username} logOut={this.logOut} />
         <Chat username={this.state.username} />
       </>
