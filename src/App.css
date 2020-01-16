@@ -23,7 +23,7 @@ body {
 
 input,
 textarea {
-font-family: 'Roboto', sans-serif;;
+  font-family: "Roboto", sans-serif;
 }
 
 /* App CSS */
@@ -36,72 +36,88 @@ font-family: 'Roboto', sans-serif;;
   height: 100%;
   width: 100%;
   position: relative;
-  font-family: 'Patua One', cursive; 
+  font-family: "Patua One", cursive;
 }
 
 /*div for define log in username*/
-.userNameReg{
-  margin-top: 10px;
-  color: grey;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-
-.logInHeader, .chatHeader {
+.logInHeader,
+.chatHeader {
   color: rgb(63, 91, 170);
   width: 100%;
   height: 15%;
   font-size: 2.5rem;
-  font-family: 'Cute Font', cursive;;
-
+  font-family: "Cute Font", cursive;
 }
 
-.chatHeader{
+/* Chat Header */
+.chatHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-
-.chatHeader h1{
+.chatHeader h1 {
   margin-left: 10%;
 }
 
-.chatHeader .chatHeaderSmlCtn{
+.chatHeader .chatHeaderSmlCtn {
   width: 60%;
   display: flex;
   justify-content: right;
   align-items: center;
   margin-right: 5%;
-  font-size: 1.2rem;
 }
 
-.chatHeaderSmlCtn p{
+.chatHeaderSmlCtn p {
   width: 80%;
   text-align: right;
   margin-right: 10px;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 1px rgb(254, 254, 254);
+  color: rgb(14, 130, 193);
+  font-family: "Acme", sans-serif;
 }
 
+.chatHeaderSmlCtn button.logout-btn {
+  width: 4rem;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1.5px dotted;
+  line-height: 1rem;
+  color: rgb(231, 225, 225);
+  background-color: rgb(19, 61, 141);
+  font-family: "Open Sans", sans-serif;
+}
 
-.chatHeaderSmlCtn button.logout-btn{
-    width: 4rem;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1.5px dotted;
-    line-height: 1rem;
-    color: rgb(231, 225, 225);
-    background-color: rgb(55, 111, 156);
+button.logout-btn:focus {
+  outline: none;
+  border: 2px dotted white;
+}
+
+/* logIn section */
+.userNameReg {
+  width: 100%;
+  margin-top: 10px;
+  color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.logInvalidation {
+  max-width: 100%;
+  text-align: left;
+  word-wrap: break-word;
 }
 
 .Login {
   color: rgb(75, 75, 75);
   position: absolute;
-  top:30%;
-  left:50%;
-  margin-left: -119px;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -133,7 +149,7 @@ font-family: 'Roboto', sans-serif;;
   outline: none;
 }
 
-.login-form .login-btn{
+.login-form button.login-btn {
   margin-top: 20px;
   padding: 10px;
   border-radius: 5px;
@@ -142,6 +158,12 @@ font-family: 'Roboto', sans-serif;;
   font-size: 1rem;
   color: rgb(231, 225, 225);
   background-color: rgb(55, 111, 156);
+  font-family: "Open Sans", sans-serif;
+}
+
+button.login-btn:focus {
+  outline: none;
+  border: 2px dotted white;
 }
 
 .login-form .error {
@@ -151,14 +173,15 @@ font-family: 'Roboto', sans-serif;;
   color: #c92c43;
 }
 
-.Chat{
+/*Chat Section */
+.Chat {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.messageCtn{
+.messageCtn {
   margin-top: 15px;
   width: 65%;
   height: 500px;
@@ -170,27 +193,28 @@ font-family: 'Roboto', sans-serif;;
   flex-direction: column;
   flex-grow: 1;
   align-items: center;
- 
 }
 
-.chatCtn{
+.chatCtn {
   width: 100%;
   height: 90%;
   overflow-y: scroll;
 }
 
-.chatbubble-right, .chatbubble-left{
+.chatbubble-right,
+.chatbubble-left {
   width: 100%;
   display: flex;
   position: relative;
   justify-content: flex-end;
 }
 
-.chatbubble-left{
+.chatbubble-left {
   justify-content: flex-start;
 }
 
-.chatbubble-right .userDiv-right, .chatbubble-left .userDiv-left{
+.chatbubble-right .userDiv-right,
+.chatbubble-left .userDiv-left {
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -199,17 +223,19 @@ font-family: 'Roboto', sans-serif;;
   position: relative;
 }
 
-.chatbubble-left .userDiv-left{
+.chatbubble-left .userDiv-left {
   align-items: flex-start;
 }
 
-.myData-right, .myData-left{
+.myData-right,
+.myData-left {
   max-width: 100%;
   width: auto;
-  background-color: rgb(49, 122, 162);
+  background-color: rgb(97, 174, 216);
   color: rgb(232, 232, 232);
-  text-shadow: 1px 1px 1px black;
-  margin:  10px 20px 0px 0;
+  text-shadow: 1px 1px 1px rgb(104, 102, 102);
+  box-shadow: 2px 2px 2px rgb(77, 75, 75);
+  margin: 10px 20px 0px 0;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -218,56 +244,68 @@ font-family: 'Roboto', sans-serif;;
   border-radius: 20px;
 }
 
-.myData-left{
-  margin:  10px 0px 0px 20px;
+.myData-left {
+  margin: 10px 0px 0px 20px;
 }
 
-.myData-right::after, .myData-left::after{
+.myData-right::after,
+.myData-left::after {
   content: "";
   display: block;
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent; 
-  border-right: 10px solid rgb(49, 122, 162);
+  border-bottom: 8px solid transparent;
+  border-right: 10px solid rgb(97, 174, 216);
   z-index: 1;
-  transform: rotate(100deg);
+  transform: rotate(130deg);
   position: absolute;
-  top: -10px;
-  right: 20px;
+  top: -5px;
+  right: 0px;
 }
 
-.myData-left::after{
-  transform: rotate(80deg);
+.myData-left::after {
+  transform: rotate(50deg);
   position: absolute;
-  top: -10px;
-  left: 20px;
+  top: -5px;
+  left: 0px;
 }
 
-p.userName-right, p.userName-left{
-  font-size: 1.2rem;
+p.userName-right,
+p.userName-left {
+  font-family: "Acme", sans-serif;
+  text-shadow: 1px 1px 1px rgb(254, 254, 254);
+  color: rgb(14, 130, 193);
+  font-size: 1.3rem;
   margin: 10px 10px 5px 0;
   text-align: right;
 }
 
-p.userName-left{
+p.userName-left {
   margin: 10px 0px 5px 10px;
   text-align: left;
 }
 
-.myData-right div.timeStamp-right{
- width: 80px;
- font-size: 0.7rem;
- display: flex;
- align-items: flex-end;
- margin: 2px 10px 15px 10px;
- text-align: end;
- position: absolute;
- left: -100px;
- bottom: -12px;
+/* timeStamp */
+.myData-right div.timeStamp-right {
+  font-family: "Heebo", sans-serif;
+  text-shadow: 1px 1px 1px white;
+  width: 80px;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: flex-end;
+  margin: 2px 10px 15px 10px;
+  text-align: end;
+  position: absolute;
+  left: -100px;
+  bottom: -12px;
+  color: grey;
 }
 
-.myData-left div.timeStamp-left{
+.myData-left div.timeStamp-left {
+  color: grey;
+  font-family: "Heebo", sans-serif;
+  text-shadow: 1px 1px 1px white;
   width: 80px;
   font-size: 0.7rem;
   display: flex;
@@ -277,38 +315,37 @@ p.userName-left{
   position: absolute;
   right: -100px;
   bottom: -12px;
- }
+}
 
-.myData-right p.msgContent-right, .myData-left p.msgContent-left{
+.myData-right p.msgContent-right,
+.myData-left p.msgContent-left {
   text-align: left;
+  font-family: "Open Sans", sans-serif;
   padding: 0px 20px;
   overflow-wrap: break-word;
-  letter-spacing: 0.8px;
-
 }
 
-.sendCtn{
-   width: 100%;
-   height: 10%;
-   display: flex;
-   flex-grow: 1;
-   margin-top: 5px;
-   
+/* Message sending section */
+.sendCtn {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-grow: 1;
+  margin-top: 5px;
 }
 
-.sendCtn input{
+.sendCtn input {
   width: 80%;
   padding: 12px;
-
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: rgb(255, 255, 255);
-  border: 2px dotted rgb(0, 0, 0);
-  background-color:rgb(199, 199, 199);
+  border: 1px solid rgb(225, 223, 223);
+  background-color: rgb(199, 199, 199);
 }
 
-.sendCtn input:focus{
-  background-color:rgb(177, 177, 177);
-  border: 3px dotted rgb(4, 112, 159);
+.sendCtn input:focus {
+  background-color: rgb(177, 177, 177);
+  border: 2px dotted rgb(4, 112, 159);
 }
 .sendCtn input:active {
   border: 2px dotted rgb(4, 112, 159);
@@ -320,29 +357,33 @@ p.userName-left{
   margin-left: -2px;
   font-size: 1rem;
   color: white;
-  background-color: rgb(55, 111, 156);
+  background-color: rgb(19, 61, 141);
   position: relative;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   overflow: hidden;
   cursor: pointer;
-  border: 2px dotted rgb(0, 0, 0);
- 
+  border: 2px dotted rgb(199, 199, 199);
 }
 
-.inputWarning{
+.inputWarning {
   color: red;
   margin-right: 10px;
+  font-family: "Patua One", cursive;
+}
+/* 200 characters word count */
+.wordsCount {
+  color: rgb(94, 94, 101);
 }
 
-.sendCtn .msg-Btn:after{
+.sendCtn .msg-Btn:after {
   content: "";
   background: rgb(186, 248, 252);
   display: block;
   position: absolute;
   padding-top: 300%;
   padding-left: 350%;
-  margin-left: -20px!important;
+  margin-left: -20px !important;
   margin-top: -120%;
   opacity: 0;
   transition: all 0.8s;
@@ -352,11 +393,10 @@ p.userName-left{
   padding: 0;
   margin: 0;
   opacity: 1;
-  transition: 0s
+  transition: 0s;
 }
 
-
-.sendCtn input:focus, .sendCtn .msg-Btn:focus {
+.sendCtn input:focus,
+.sendCtn .msg-Btn:focus {
   outline: none;
 }
-

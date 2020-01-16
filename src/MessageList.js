@@ -6,7 +6,7 @@ class MessageList extends React.Component {
   render() {
     let users = this.props.users; // this is the result from server
     console.log(users);
-
+    //render out the chatbubbles for the history message
     let result = users.map(user => {
       if (user.username === this.props.username) {
         return (
@@ -27,22 +27,23 @@ class MessageList extends React.Component {
           </div>
         );
       } else {
+        //render out the chatbubbles for the user message
         return (
           <div className="chatbubble-left" key={user.id}>
-          <div className="userDiv-left">
-            <p className="userName-left">{user.username}</p>
-            <div className="myData-left">
-              <div className="timeStamp-left">
-                {this.props.timeConverter(user.timestamp)}
+            <div className="userDiv-left">
+              <p className="userName-left">{user.username}</p>
+              <div className="myData-left">
+                <div className="timeStamp-left">
+                  {this.props.timeConverter(user.timestamp)}
+                </div>
+                <p className="msgContent-left">
+                  <Linkify>
+                    <Emojify>{user.content}</Emojify>
+                  </Linkify>
+                </p>
               </div>
-              <p className="msgContent-left">
-                <Linkify>
-                  <Emojify>{user.content}</Emojify>
-                </Linkify>
-              </p>
             </div>
           </div>
-        </div>
         );
       }
     });

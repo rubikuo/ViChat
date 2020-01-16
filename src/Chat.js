@@ -45,7 +45,7 @@ class Chat extends React.Component {
     this.setState({ users: [...copyMessage, message] });
     this.scrollToBottom();
   }
-
+  
   scrollToBottom() {
     let chatCtn = this.ctnRef.current;
     chatCtn.scrollTop = chatCtn.scrollHeight;
@@ -60,7 +60,7 @@ class Chat extends React.Component {
   }
 
   componentWillUnmount() {
-    this.socket.off('new_messages');
+    this.socket.off("new_messages");
     this.socket.once("disconnect", () => {
       console.log("Disconnected");
     });
@@ -87,15 +87,11 @@ class Chat extends React.Component {
   }
 
   render() {
+    // validation for the word count in the chat message input
     let characters = this.state.newMessage;
-
-    console.log(characters);
-
     let disabled;
     let warning;
-
     let numOfCharacters = characters.length;
-
     if (numOfCharacters > 200) {
       disabled = true;
       warning = (
@@ -113,7 +109,7 @@ class Chat extends React.Component {
       <div className="Chat">
         <div className="messageCtn">
           <MessageList
-            username = {this.props.username}
+            username={this.props.username}
             users={this.state.users}
             timeConverter={this.timeConverter}
             ctnRef={this.ctnRef}

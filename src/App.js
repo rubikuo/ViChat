@@ -2,8 +2,7 @@ import React from "react";
 import Chat from "./Chat";
 import Login from "./Login";
 import RenderHeader from "./RenderHeader";
-import {Helmet} from "react-helmet";
-
+import { Helmet } from "react-helmet";
 import "./App.css";
 
 class App extends React.Component {
@@ -28,7 +27,6 @@ class App extends React.Component {
   logInUserName(e) {
     let logInName = this.state.username;
     e.preventDefault();
-
     if (!this.regExLogin.test(logInName)) return;
     else {
       this.setState({ currentPage: "chat" });
@@ -43,20 +41,26 @@ class App extends React.Component {
     let page;
     let logInPage = (
       <>
-        <Helmet><title>ViChat:Log-In</title></Helmet>
+        <Helmet>
+          <title>ViChat:Log-In</title>
+        </Helmet>
         <header className="logInHeader">
           <h1>ViChat</h1>
         </header>
         <Login
           updateUserName={this.updateUserName}
           logInUserName={this.logInUserName}
+          username={this.state.username}
+          regExLogin={this.regExLogin}
         />
       </>
     );
 
     let chatPage = (
       <>
-       <Helmet><title>ViChat</title></Helmet>
+        <Helmet>
+          <title>ViChat</title>
+        </Helmet>
         <RenderHeader username={this.state.username} logOut={this.logOut} />
         <Chat username={this.state.username} />
       </>
