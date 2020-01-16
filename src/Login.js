@@ -36,15 +36,15 @@ class LogIn extends React.Component {
             />
 
             <div className="logInvalidation">
-              <p style={styleColor}>
+              <span style={styleColor}>
                 <FontAwesomeIcon icon={faInfoCircle} className="infoIcon" />{" "}
-                Username must be max 12 characters
-              </p>
-              <p style={styleColor2}>
+                Username must be between 1 to 12 characters
+              </span>
+              <span style={styleColor2}>
                 <FontAwesomeIcon icon={faInfoCircle} className="infoIcon" />{" "}
-                Only can contain alphabets, numbers(0-9) <br></br> empty spaces,
-                underscore(_), hyphen(-)
-              </p>
+                Only Can contain uppercase, lowercase alphabets, numbers(0-9),
+                empty spaces, underscore(_), hyphen(-)
+              </span>
             </div>
           </div>
           <button className="login-btn">Log In</button>

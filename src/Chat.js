@@ -45,7 +45,7 @@ class Chat extends React.Component {
     this.setState({ users: [...copyMessage, message] });
     this.scrollToBottom();
   }
-  
+
   scrollToBottom() {
     let chatCtn = this.ctnRef.current;
     chatCtn.scrollTop = chatCtn.scrollHeight;

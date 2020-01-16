@@ -37,7 +37,7 @@ class MessageList extends React.Component {
                   {this.props.timeConverter(user.timestamp)}
                 </div>
                 <p className="msgContent-left">
-                  <Linkify>
+                  <Linkify className="Linkify">
                     <Emojify>{user.content}</Emojify>
                   </Linkify>
                 </p>
